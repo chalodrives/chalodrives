@@ -1,345 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>ChaloDrives Rentals</title>
-<style>
-  /* Reset */
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    background: #f5f7fa;
-    color: #333;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Header */
-  header {
-    background-color: #0d3b66;
-    color: white;
-    padding: 1rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  header .logo {
-    font-weight: 700;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    cursor: default;
-  }
-  nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 1.5rem;
-    font-weight: 600;
-    transition: color 0.3s ease;
-  }
-  nav a:hover {
-    color: #ff6f61;
-  }
-
-  /* Hero section */
-  .hero {
-    background: url('https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') center/cover no-repeat;
-    color: white;
-    height: 300px;
-    max-height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 1rem;
-    position: relative;
-  }
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(13, 59, 102, 0.7);
-  }
-  .hero-content {
-    position: relative;
-    max-width: 500px;
-    z-index: 1;
-  }
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-  }
-  .hero p {
-    font-size: 1.1rem;
-  }
-
-  /* Cars section */
-  .cars-section {
-    padding: 2rem 1.5rem 3rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    width: 100%;
-    flex-grow: 1;
-  }
-  .cars-section h2 {
-    text-align: center;
-    color: #0d3b66;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  .cars-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-  }
-  .car-card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease;
-  }
-  .car-card:hover {
-    transform: translateY(-5px);
-  }
-  .car-card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-  }
-  .car-info {
-    padding: 1rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .car-info h3 {
-    margin-bottom: 0.5rem;
-    color: #0d3b66;
-  }
-  .car-info p {
-    flex-grow: 1;
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 0.75rem;
-  }
-  .car-info .price {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: #ff6f61;
-  }
-  .car-info button {
-    background-color: #ff6f61;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    padding: 0.5rem 0;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: auto;
-    transition: background-color 0.3s ease;
-  }
-  .car-info button:hover {
-    background-color: #e85a4f;
-  }
-
-  /* Contact section */
-  .contact-section {
-    background-color: #0d3b66;
-    color: white;
-    padding: 2rem 1.5rem;
-  }
-  .contact-section h2 {
-    text-align: center;
-    margin-bottom: 1rem;
-    font-size: 2rem;
-  }
-  .contact-content {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-  }
-  .contact-info, .contact-form {
-    flex: 1 1 320px;
-    min-width: 280px;
-  }
-  .contact-info p {
-    margin-bottom: 0.75rem;
-    font-size: 1rem;
-  }
-  .contact-info p strong {
-    display: inline-block;
-    width: 90px;
-    color: #ff6f61;
-  }
-  form label {
-    display: block;
-    margin-bottom: 0.3rem;
-    font-weight: 600;
-  }
-  form input, form textarea {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border-radius: 4px;
-    border: none;
-    font-size: 1rem;
-  }
-  form textarea {
-    resize: vertical;
-    min-height: 80px;
-  }
-  form button {
-    background-color: #ff6f61;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-weight: 700;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  form button:hover {
-    background-color: #e85a4f;
-  }
-
-  /* Footer */
-  footer {
-    background-color: #022542;
-    color: #ccc;
-    text-align: center;
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  /* Responsive tweaks */
-  @media (max-width: 480px) {
-    .hero h1 {
-      font-size: 1.8rem;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>ChaloDrives Rentals - Self Drive Car Rental</title>
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .cars-section {
-      padding: 1rem 1rem 2rem;
-    }
-    .contact-content {
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #001F3F;
+      background-color: #fff;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      justify-content: space-between;
+      min-height: 100vh;
     }
-  }
-</style>
+    a {
+      color: #FFCC00;
+      text-decoration: none;
+    }
+    a:hover,
+    button:hover {
+      opacity: 0.9;
+      cursor: pointer;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+    }
+
+    .btn-primary {
+      background-color: #FFCC00;
+      color: #001F3F;
+      border: none;
+      padding: 12px 24px;
+      font-weight: 700;
+      border-radius: 28px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      text-align: center;
+      user-select: none;
+    }
+    .btn-primary:active {
+      background-color: #E6B800;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+
+    /* HEADER with logo and tagline */
+    header.site-header {
+      background-color: #001F3F;
+      color: white;
+      text-align: center;
+      padding: 36px 24px 40px 24px;
+      user-select: none;
+    }
+    header.site-header .logo {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+      color: #FFCC00;
+    }
+    header.site-header .tagline {
+      font-size: 1.375rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #FFFFFF;
+    }
+    header.site-header .subtagline {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: 0.85;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.4;
+    }
+
+    /* AVAILABLE CARS */
+    section {
+      padding: 56px 24px 48px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    #available-cars h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 36px;
+      text-align: center;
+    }
+    .car-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 24px;
+    }
+    .car-card {
+      background: #F7F7F7;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,31,63,0.08);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .car-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 14px rgba(0,31,63,0.15);
+    }
+    .car-card img {
+      width: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+      max-height: 140px;
+    }
+    .car-info {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .car-name {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #001F3F;
+      text-transform: capitalize;
+    }
+    .car-details {
+      font-size: 0.9rem;
+      color: #333333;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .car-detail-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .car-detail-item svg {
+      fill: #001F3F;
+      width: 18px;
+      height: 18px;
+    }
+    .car-price {
+      font-weight: 800;
+      color: #001F3F;
+      font-size: 1.125rem;
+      margin-bottom: 12px;
+    }
+    .car-card button {
+      align-self: flex-start;
+      background-color: #FFCC00;
+      color: #001F3F;
+      border: none;
+      border-radius: 24px;
+      padding: 8px 18px;
+      font-weight: 700;
+      transition: background-color 0.3s;
+    }
+    .car-card button:active {
+      background-color: #E6B800;
+    }
+
+    /* WHY CHOOSE US */
+    #why-choose-us {
+      background: #fff;
+      text-align: center;
+    }
+    #why-choose-us h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 36px;
+    }
+    .features-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .feature-item {
+      max-width: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      color: #001F3F;
+    }
+    .feature-item svg {
+      width: 48px;
+      height: 48px;
+      fill: #FFCC00;
+    }
+    .feature-item p {
+      font-weight: 600;
+      line-height: 1.2;
+      font-size: 1rem;
+    }
+
+    /* CONTACT US */
+    #contact-us {
+      max-width: 900px;
+      margin: 0 auto 48px auto;
+      padding: 0 24px;
+    }
+    #contact-us h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      text-align: center;
+      color: #001F3F;
+    }
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      color: #001F3F;
+    }
+    form.contact-form {
+      flex: 1 1 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    form.contact-form label {
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    form.contact-form input,
+    form.contact-form textarea {
+      padding: 10px 14px;
+      font-size: 1rem;
+      border-radius: 12px;
+      border: 1.5px solid #001F3F;
+      resize: vertical;
+      min-height: 38px;
+      outline-offset: 2px;
+    }
+    form.contact-form textarea {
+      min-height: 90px;
+    }
+    form.contact-form button {
+      margin-top: 12px;
+      max-width: 140px;
+      align-self: start;
+      padding: 10px;
+      font-weight: 700;
+      border-radius: 24px;
+      border: none;
+      background-color: #FFCC00;
+      color: #001F3F;
+      transition: background-color 0.3s ease;
+    }
+    form.contact-form button:active {
+      background-color: #E6B800;
+    }
+    .contact-info {
+      flex: 1 1 300px;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: center;
+    }
+    .contact-info p {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .contact-info p svg {
+      fill: #FFCC00;
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    footer.site-footer {
+      background-color: #001F3F;
+      color: white;
+      text-align: center;
+      padding: 16px 12px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      user-select: none;
+      margin-top: auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .car-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      }
+      .features-grid {
+        gap: 32px;
+      }
+      .contact-wrapper {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div class="logo">ChaloDrives Rentals</div>
-  <nav>
-    <a href="#cars">Cars</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
 
-<section class="hero" aria-label="Car Rental Hero Banner">
-  <div class="hero-content">
-    <h1>Drive Your Dream Car Today</h1>
-    <p>Most Trusted Self-Drive Car Rental Services in India</p>
-  </div>
-</section>
+  <!-- HEADER with logo and tagline -->
+  <header class="site-header" role="banner">
+    <div class="logo" aria-label="ChaloDrives Rentals Logo">ChaloDrives Rentals</div>
+    <div class="tagline">Drive Your Dream Car Today</div>
+    <div class="subtagline">Most Trusted Self-Drive Car Rental Services in India</div>
+  </header>
 
-<section class="cars-section" id="cars" aria-label="Available Cars">
-  <h2>Our Fleet</h2>
-  <div class="cars-grid">
-    <article class="car-card" tabindex="0">
-      <img src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=160&w=260" alt="Red convertible sports car" />
-      <div class="car-info">
-        <h3>Sporty Convertible</h3>
-        <p>Feel the wind with this stylish red convertible. Perfect for city cruises and sunny days.</p>
-        <div class="price">70/hour</div>
-        <button type="button" aria-label="Rent Sporty Convertible">Rent Now</button>
-      </div>
-    </article>
+  <!-- AVAILABLE CARS -->
+  <section id="available-cars" aria-labelledby="available-cars-heading">
+    <h2 id="available-cars-heading">Available Cars</h2>
+    <div class="car-grid">
 
-    <article class="car-card" tabindex="0">
-      <img src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=160&w=260" alt="Sleek black luxury sedan" />
-      <div class="car-info">
-        <h3>Luxury Sedan</h3>
-        <p>Experience comfort in this premium black sedan, ideal for business trips and special occasions.</p>
-        <div class="price">120/hour</div>
-        <button type="button" aria-label="Rent Luxury Sedan">Rent Now</button>
-      </div>
-    </article>
+      <article class="car-card" aria-label="Maruti Swift Hatchback">
+        <img src="https://images.pexels.com/photos/1819644/pexels-photo-1819644.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Maruti Swift - Hatchback" />
+        <div class="car-info">
+          <h3 class="car-name">Maruti Swift</h3>
+          <div class="car-details">
+            <div class="car-detail-item" title="Rental Price">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a7 7 0 0 0-7 7H3l4 4-4 4h2a7 7 0 0 0 7 7 7 7 0 0 0 0-14z"/></svg>
+              <span>₹ 299/hr</span>
+            </div>
+            <div class="car-detail-item" title="Fuel Type">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18H3V3z"/></svg>
+              <span>Petrol</span>
+            </div>
+            <div class="car-detail-item" title="Seating Capacity">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="2"/><path d="M2 20v-2a4 4 0 0 1 8 0v2H2zm10 0v-2a4 4 0 0 1 8 0v2h-8z"/></svg>
+              <span>5 seats</span>
+            </div>
+          </div>
+          <div class="car-price">₹ 1,299/day</div>
+          <button aria-label="Book Maruti Swift" type="button">Book Now</button>
+        </div>
+      </article>
 
-    <article class="car-card" tabindex="0">
-      <img src="https://images.pexels.com/photos/170811/pexels-photo-764589.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=160&w=260" alt="Silver compact hatchback car" />
-      <div class="car-info">
-        <h3>Compact Hatchback</h3>
-        <p>Fuel-efficient and easy to park, this hatchback is great for city driving and daily errands.</p>
-        <div class="price">45/hour</div>
-        <button type="button" aria-label="Rent Compact Hatchback">Rent Now</button>
-      </div>
-    </article>
+      <article class="car-card" aria-label="Hyundai Creta SUV">
+        <img src="https://images.pexels.com/photos/356372/pexels-photo-356372.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Hyundai Creta - SUV" />
+        <div class="car-info">
+          <h3 class="car-name">Hyundai Creta</h3>
+          <div class="car-details">
+            <div class="car-detail-item" title="Rental Price">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a7 7 0 0 0-7 7H3l4 4-4 4h2a7 7 0 0 0 7 7 7 7 0 0 0 0-14z"/></svg>
+              <span>₹ 399/hr</span>
+            </div>
+            <div class="car-detail-item" title="Fuel Type">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18H3V3z"/></svg>
+              <span>Diesel</span>
+            </div>
+            <div class="car-detail-item" title="Seating Capacity">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="2"/><path d="M2 20v-2a4 4 0 0 1 8 0v2H2zm10 0v-2a4 4 0 0 1 8 0v2h-8z"/></svg>
+              <span>7 seats</span>
+            </div>
+          </div>
+          <div class="car-price">₹ 1,699/day</div>
+          <button aria-label="Book Hyundai Creta" type="button">Book Now</button>
+        </div>
+      </article>
 
-    <article class="car-card" tabindex="0">
-      <img src="https://images.pexels.com/photos/331157/pexels-photo-331157.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=160&w=260" alt="White SUV car in nature" />
-      <div class="car-info">
-        <h3>Family SUV</h3>
-        <p>Spacious and safe SUV, perfect for family trips and outdoor adventures.</p>
-        <div class="price">100/hour</div>
-        <button type="button" aria-label="Rent Family SUV">Rent Now</button>
-      </div>
-    </article>
-  </div>
-</section>
+      <article class="car-card" aria-label="Maruti Brezza SUV">
+        <img src="https://images.pexels.com/photos/1007411/pexels-photo-1007411.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Maruti Brezza - SUV" />
+        <div class="car-info">
+          <h3 class="car-name">Maruti Brezza</h3>
+          <div class="car-details">
+            <div class="car-detail-item" title="Rental Price">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a7 7 0 0 0-7 7H3l4 4-4 4h2a7 7 0 0 0 7 7 7 7 0 0 0 0-14z"/></svg>
+              <span>₹ 379/hr</span>
+            </div>
+            <div class="car-detail-item" title="Fuel Type">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18H3V3z"/></svg>
+              <span>Petrol</span>
+            </div>
+            <div class="car-detail-item" title="Seating Capacity">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="2"/><path d="M2 20v-2a4 4 0 0 1 8 0v2H2zm10 0v-2a4 4 0 0 1 8 0v2h-8z"/></svg>
+              <span>5 seats</span>
+            </div>
+          </div>
+          <div class="car-price">₹ 1,499/day</div>
+          <button aria-label="Book Maruti Brezza" type="button">Book Now</button>
+        </div>
+      </article>
 
-<section class="contact-section" id="contact" aria-label="Contact Information and Form">
-  <h2>Contact Us</h2>
-  <div class="contact-content">
-    <div class="contact-info" aria-label="Contact Details">
-      <p><strong>Phone:</strong> 9133666641, 912223232</p>
-      <p><strong>Email:</strong> info@ChaloDrivesrentals.com</p>
+      <article class="car-card" aria-label="Honda City Sedan">
+        <img src="https://images.pexels.com/photos/1448986/pexels-photo-1448986.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Honda City - Sedan" />
+        <div class="car-info">
+          <h3 class="car-name">Honda City</h3>
+          <div class="car-details">
+            <div class="car-detail-item" title="Rental Price">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a7 7 0 0 0-7 7H3l4 4-4 4h2a7 7 0 0 0 7 7 7 7 0 0 0 0-14z"/></svg>
+              <span>₹ 359/hr</span>
+            </div>
+            <div class="car-detail-item" title="Fuel Type">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18H3V3z"/></svg>
+              <span>Petrol</span>
+            </div>
+            <div class="car-detail-item" title="Seating Capacity">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="2"/><path d="M2 20v-2a4 4 0 0 1 8 0v2H2zm10 0v-2a4 4 0 0 1 8 0v2h-8z"/></svg>
+              <span>5 seats</span>
+            </div>
+          </div>
+          <div class="car-price">₹ 1,299/day</div>
+          <button aria-label="Book Honda City" type="button">Book Now</button>
+        </div>
+      </article>
     </div>
-    <form class="contact-form" aria-label="Contact Form" onsubmit="submitForm(event)">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Your full name" required />
+  </section>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+  <!-- WHY CHOOSE US -->
+  <section id="why-choose-us" aria-labelledby="why-choose-us-heading">
+    <h2 id="why-choose-us-heading">Why Choose Us</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true" role="img" >
+          <path d="M12 2a4 4 0 0 0-4 4v4H6a2 2 0 0 0-2 2v6h16v-6a2 2 0 0 0-2-2h-2V6a4 4 0 0 0-4-4Zm0 2a2 2 0 0 1 2 2v4h-4V6a2 2 0 0 1 2-2ZM8 12h8v4H8v-4ZM6 20v-2h12v2H6Z"/>
+        </svg>
+        <p>No Security Deposit</p>
+      </div>
+      <div class="feature-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true" role="img">
+          <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Zm0-2a8 8 0 1 1 8-8 8 8 0 0 1-8 8ZM12 6v6l4 2"/>
+        </svg>
+        <p>Free Cancellation</p>
+      </div>
+      <div class="feature-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true" role="img">
+          <path d="M21 4H3a1 1 0 0 0-1 1v13a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V5a1 1 0 0 0-1-1Zm-1 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-6h13Zm0-8H7v-5h12Z"/>
+        </svg>
+        <p>24/7 Roadside Assistance</p>
+      </div>
+      <div class="feature-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true" role="img">
+          <path d="M4 20h16v-3a7 7 0 0 0-7-7 7 7 0 0 0-7 7Zm7-8a5 5 0 0 1 5 5v1H6v-1a5 5 0 0 1 5-5Zm11-5h-3v7a3 3 0 0 1-6 0V7H5V4h14Z"/>
+        </svg>
+        <p>Sanitized Vehicles</p>
+      </div>
+      <div class="feature-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true" role="img">
+          <path d="M4 7h16v10H4Zm14-2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Zm-7 7v-4"/>
+        </svg>
+        <p>Flexible Booking</p>
+      </div>
+    </div>
+  </section>
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+  <!-- CONTACT US -->
+  <section id="contact-us" aria-labelledby="contact-us-heading">
+    <h2 id="contact-us-heading">Contact Us</h2>
+    <div class="contact-wrapper">
+      <form class="contact-form" aria-label="Contact form" novalidate>
+        <label for="name">Name *</label>
+        <input id="name" name="name" type="text" placeholder="Your Name" required aria-required="true" />
+        <label for="email">Email *</label>
+        <input id="email" name="email" type="email" placeholder="Your Email" required aria-required="true" />
+        <label for="message">Message *</label>
+        <textarea id="message" name="message" placeholder="Your Message" required aria-required="true"></textarea>
+        <button type="submit" class="btn-primary" aria-label="Submit contact form">Send</button>
+      </form>
 
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
-</section>
+      <div class="contact-info" aria-label="Contact information">
+               <p><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15.46v3.57c0 .82-.63 1.48-1.39 1.48a19.66 19.66 0 0 1-8.72-3.06 19.74 19.74 0 0 1-6-7.3A19.94 19.94 0 0 1 5.93 4c0-.76.66-1.39 1.48-1.39h3.57a1.23 1.23 0 0 1 1.17.88l.87 2.7a1.21 1.21 0 0 1-.29 1.15l-1.54 1.53a12.28 12.28 0 0 0 4.84 4.84l1.53-1.53a1.2 1.2 0 0 1 1.14-.29l2.71.87a1.22 1.22 0 0 1 .88 1.17Z"/></svg>📞 +91-9133666641, 912223232</p>
+        <p><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8V7l-7-5-7 5v1l7 5 7-5ZM3 9v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9l-9 6-9-6Z"/></svg>✉️ support@chalodrives.in</p>
+    </div>
+    </div>
+  </section>
 
-<footer>
-  &copy; 2025 ChaloDrives Rentals. All rights reserved.
-</footer>
+  <footer class="site-footer" role="contentinfo">
+    © 2025 ChaloDrives Rentals. All rights reserved.
+  </footer>
 
-<script>
-  function submitForm(event) {
-    event.preventDefault();
-    const name = event.target.name.value.trim();
-    const email = event.target.email.value.trim();
-    const message = event.target.message.value.trim();
-    if(name && email && message) {
-      alert('Thank you, ' + name + '! Your message has been received. We will get back to you soon.');
-      event.target.reset();
-    } else {
-      alert('Please fill in all the fields before submitting.');
-    }
-  }
-</script>
+  <script>
+    // Form submission simulation
+    document.querySelector('.contact-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const name = e.target.name.value.trim();
+      const email = e.target.email.value.trim();
+      const message = e.target.message.value.trim();
+      if (!name || !email || !message) {
+        alert('Please fill out all required fields.');
+        return;
+      }
+      alert('Thank you for contacting us, ' + name + '! We will get back to you soon.');
+      e.target.reset();
+    });
+
+    // Booking buttons alert
+    document.querySelectorAll('#available-cars button').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        alert('Booking functionality coming soon! Thank you for your interest.');
+      });
+    });
+  </script>
+
 </body>
 </html>
-

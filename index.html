@@ -1,127 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChaloDrives - Self Drive Car Rentals</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-      color: #333;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>ChaloDrives Rentals</title>
+<style>
+  /* Reset */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background: #f5f7fa;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 
-    header {
-      background-color: #004aad;
-      color: white;
-      text-align: center;
-      padding: 20px 10px;
-    }
+  /* Header */
+  header {
+    background-color: #0d3b66;
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    cursor: default;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #ff6f61;
+  }
 
-    .logo {
-      font-size: 30px;
-      font-weight: bold;
-      color: yellow;
-      text-shadow: 2px 2px #000;
-    }
+  /* Hero section */
+  .hero {
+    background: url('https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') center/cover no-repeat;
+    color: white;
+    height: 300px;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 59, 102, 0.7);
+  }
+  .hero-content {
+    position: relative;
+    max-width: 500px;
+    z-index: 1;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
 
-    .features, .cars {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
+  /* Cars section */
+  .cars-section {
+    padding: 2rem 1.5rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    flex-grow: 1;
+  }
+  .cars-section h2 {
+    text-align: center;
+    color: #0d3b66;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .cars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .car-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+  }
+  .car-card:hover {
+    transform: translateY(-5px);
+  }
+  .car-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+  .car-info {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .car-info h3 {
+    margin-bottom: 0.5rem;
+    color: #0d3b66;
+  }
+  .car-info p {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.75rem;
+  }
+  .car-info .price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #ff6f61;
+  }
+  .car-info button {
+    background-color: #ff6f61;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 0.5rem 0;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: auto;
+    transition: background-color 0.3s ease;
+  }
+  .car-info button:hover {
+    background-color: #e85a4f;
+  }
 
-    .feature-box, .car-box {
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
+  /* Contact section */
+  .contact-section {
+    background-color: #0d3b66;
+    color: white;
+    padding: 2rem 1.5rem;
+  }
+  .contact-section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  .contact-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+  .contact-info, .contact-form {
+    flex: 1 1 320px;
+    min-width: 280px;
+  }
+  .contact-info p {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+  .contact-info p strong {
+    display: inline-block;
+    width: 90px;
+    color: #ff6f61;
+  }
+  form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+  }
+  form input, form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: none;
+    font-size: 1rem;
+  }
+  form textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  form button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  form button:hover {
+    background-color: #e85a4f;
+  }
 
-    footer {
-      background-color: #222;
-      color: white;
-      text-align: center;
-      padding: 15px 10px;
-    }
+  /* Footer */
+  footer {
+    background-color: #022542;
+    color: #ccc;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
 
-    .contact {
-      background-color: #eaf2ff;
-      padding: 20px;
-      text-align: center;
+  /* Responsive tweaks */
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: 1.8rem;
     }
-
-    .contact p {
-      margin: 5px;
+    .cars-section {
+      padding: 1rem 1rem 2rem;
     }
-
-    .highlight {
-      color: green;
-      font-weight: bold;
+    .contact-content {
+      flex-direction: column;
+      gap: 1.5rem;
     }
-  </style>
+  }
+</style>
 </head>
-
 <body>
-  <header>
-    <div class="logo">🚗 ChaloDrives</div>
-    <p>Your Trusted Self-Drive Car Rental Service in India</p>
-  </header>
+<header>
+  <div class="logo">ChaloDrives Rentals</div>
+  <nav>
+    <a href="#cars">Cars</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <section class="features">
-    <div class="feature-box">
-      <h2>Easy Booking</h2>
-      <p>Book your car online in just a few clicks.</p>
-    </div>
-    <div class="feature-box">
-      <h2>Affordable Pricing</h2>
-      <p>Only ₹70/hour for all vehicles.</p>
-    </div>
-    <div class="feature-box">
-      <h2>Safe & Sanitized</h2>
-      <p>All vehicles are regularly cleaned & sanitized.</p>
-    </div>
-    <div class="feature-box">
-      <h2>24x7 Support</h2>
-      <p>Our team is available anytime you need help.</p>
-    </div>
-  </section>
+<section class="hero" aria-label="Car Rental Hero Banner">
+  <div class="hero-content">
+    <h1>Drive Your Dream Car Today</h1>
+    <p>Most Trusted Self-Drive Car Rental Services in India</p>
+  </div>
+</section>
 
-  <section class="cars">
-    <div class="car-box">
-      <h3>Maruti Baleno</h3>
-      <p>Comfortable & fuel-efficient. ₹70/hour.</p>
-    </div>
-    <div class="car-box">
-      <h3>Maruti Swift</h3>
-      <p>Perfect for city drives. ₹70/hour.</p>
-    </div>
-    <div class="car-box">
-      <h3>Maruti Ciaz</h3>
-      <p>Premium sedan experience. ₹70/hour.</p>
-    </div>
-    <div class="car-box">
-      <h3>Maruti Ertiga</h3>
-      <p>Spacious 7-seater. ₹70/hour.</p>
-    </div>
-  </section>
+<section class="cars-section" id="cars" aria-label="Available Cars">
+  <h2>Our Fleet</h2>
+  <div class="cars-grid">
+    <article class="car-card" tabindex="0">
+      <img src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=160&w=260" alt="Red convertible sports car" />
+      <div class="car-info">
+        <h3>Sporty Convertible</h3>
+        <p>Feel the wind with this stylish red convertible. Perfect for city cruises and sunny days.</p>
+        <div class="price">70/hour</div>
+        <button type="button" aria-label="Rent Sporty Convertible">Rent Now</button>
+      </div>
+    </article>
 
-  <section class="contact">
-    <h2>Contact Us</h2>
-    <p><strong>Phone:</strong> 9133666641, 912223232</p>
-    <p><strong>Email:</strong> supportchalodrives@gmail.com</p>
-    <p><strong>Website:</strong> <a href="https://chalodrives.in">chalodrives.in</a></p>
-  </section>
+    <article class="car-card" tabindex="0">
+      <img src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=160&w=260" alt="Sleek black luxury sedan" />
+      <div class="car-info">
+        <h3>Luxury Sedan</h3>
+        <p>Experience comfort in this premium black sedan, ideal for business trips and special occasions.</p>
+        <div class="price">120/hour</div>
+        <button type="button" aria-label="Rent Luxury Sedan">Rent Now</button>
+      </div>
+    </article>
 
-  <footer>
-    <p>&copy; 2025 ChaloDrives. All rights reserved.</p>
-  </footer>
+    <article class="car-card" tabindex="0">
+      <img src="https://images.pexels.com/photos/170811/pexels-photo-764589.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=160&w=260" alt="Silver compact hatchback car" />
+      <div class="car-info">
+        <h3>Compact Hatchback</h3>
+        <p>Fuel-efficient and easy to park, this hatchback is great for city driving and daily errands.</p>
+        <div class="price">45/hour</div>
+        <button type="button" aria-label="Rent Compact Hatchback">Rent Now</button>
+      </div>
+    </article>
+
+    <article class="car-card" tabindex="0">
+      <img src="https://images.pexels.com/photos/331157/pexels-photo-331157.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=160&w=260" alt="White SUV car in nature" />
+      <div class="car-info">
+        <h3>Family SUV</h3>
+        <p>Spacious and safe SUV, perfect for family trips and outdoor adventures.</p>
+        <div class="price">100/hour</div>
+        <button type="button" aria-label="Rent Family SUV">Rent Now</button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="contact-section" id="contact" aria-label="Contact Information and Form">
+  <h2>Contact Us</h2>
+  <div class="contact-content">
+    <div class="contact-info" aria-label="Contact Details">
+      <p><strong>Phone:</strong> 9133666641, 912223232</p>
+      <p><strong>Email:</strong> info@ChaloDrivesrentals.com</p>
+    </div>
+    <form class="contact-form" aria-label="Contact Form" onsubmit="submitForm(event)">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 ChaloDrives Rentals. All rights reserved.
+</footer>
+
+<script>
+  function submitForm(event) {
+    event.preventDefault();
+    const name = event.target.name.value.trim();
+    const email = event.target.email.value.trim();
+    const message = event.target.message.value.trim();
+    if(name && email && message) {
+      alert('Thank you, ' + name + '! Your message has been received. We will get back to you soon.');
+      event.target.reset();
+    } else {
+      alert('Please fill in all the fields before submitting.');
+    }
+  }
+</script>
 </body>
-
 </html>
+

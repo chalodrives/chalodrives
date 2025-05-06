@@ -21,7 +21,7 @@
     <div class="car-grid">
 
       <article class="car-card" aria-label="Maruti Swift Hatchback">
-        <img src="img/maruti-swift.jpg" alt="Maruti Swift - Hatchback" />
+        <img src="img/maruti-swift-1.jpg" alt="Maruti Swift - Hatchback" />
         <div class="car-info">
           <h3 class="car-name">Maruti Swift</h3>
           <div class="car-details">
@@ -39,7 +39,7 @@
             </div>
           </div>
           <div class="car-price">₹ 1,299/day</div>
-          <button aria-label="Book Maruti Swift" type="button">Book Now</button>
+          <a href="maruti-swift.html" class="btn-primary" aria-label="Book Maruti Swift">Book Now</a>
         </div>
       </article>
 
@@ -62,7 +62,7 @@
             </div>
           </div>
           <div class="car-price">₹ 1,699/day</div>
-          <button aria-label="Book Hyundai Creta" type="button">Book Now</button>
+          <a href="hyundai-creta.html" class="btn-primary" aria-label="Book Hyundai Creta">Book Now</a>
         </div>
       </article>
 
@@ -85,7 +85,7 @@
             </div>
           </div>
           <div class="car-price">₹ 1,499/day</div>
-          <button aria-label="Book Maruti Brezza" type="button">Book Now</button>
+          <a href="maruti-brezza.html" class="btn-primary" aria-label="Book Maruti Brezza">Book Now</a>
         </div>
       </article>
 
@@ -108,7 +108,7 @@
             </div>
           </div>
           <div class="car-price">₹ 1,299/day</div>
-          <button aria-label="Book Honda City" type="button">Book Now</button>
+          <a href="honda-city.html" class="btn-primary" aria-label="Book Honda City">Book Now</a>
         </div>
       </article>
     </div>
@@ -167,8 +167,8 @@
 
       <div class="contact-info" aria-label="Contact information">
         <p><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8 2 4 5 4 9c0 3.58 3 8 8 8s8-4.42 8-8c0-4-4-7-8-7ZM12 12c-2.21 0-4-1.794-4-4s1.79-4 4-4c2.206 0 4 1.794 4 4s-1.794 4-4 4Zm0 2c3.313 0 6 1.79 6 4v2H6v-2c0-2.21 2.687-4 6-4Z"/></svg>📍 123 Urban Drive, Bangalore, India</p>
-        <p><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15.46v3.57c0 .82-.63 1.48-1.39 1.48a19.66 19.66 0 0 1-8.72-3.06 19.74 19.74 0 0 1-6-7.3A19.94 19.94 0 0 1 5.93 4c0-.76.66-1.39 1.48-1.39h3.57a1.23 1.23 0 0 1 1.17.88l.87 2.7a1.21 1.21 0 0 1-.29 1.15l-1.54 1.53a12.28 12.28 0 0 0 4.84 4.84l1.53-1.53a1.2 1.2 0 0 1 1.14-.29l2.71.87a1.22 1.22 0 0 1 .88 1.17Z"/></svg> +91-9133666641, 912223232</p>
-        <p><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8V7l-7-5-7 5v1l7 5 7-5ZM3 9v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9l-9 6-9-6Z"/></svg>support@ychalodrives.in</p>
+        <p><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15.46v3.57c0 .82-.63 1.48-1.39 1.48a19.66 19.66 0 0 1-8.72-3.06 19.74 19.74 0 0 1-6-7.3A19.94 19.94 0 0 1 5.93 4c0-.76.66-1.39 1.48-1.39h3.57a1.23 1.23 0 0 1 1.17.88l.87 2.7a1.21 1.21 0 0 1-.29 1.15l-1.54 1.53a12.28 12.28 0 0 0 4.84 4.84l1.53-1.53a1.2 1.2 0 0 1 1.14-.29l2.71.87a1.22 1.22 0 0 1 .88 1.17Z"/></svg>+91-9133666641, 912223232</p>
+        <p><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8V7l-7-5-7 5v1l7 5 7-5ZM3 9v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9l-9 6-9-6Z"/></svg>support@chalodrives.in</p>
       </div>
     </div>
   </section>
@@ -191,16 +191,7 @@
       alert('Thank you for contacting us, ' + name + '! We will get back to you soon.');
       e.target.reset();
     });
-
-    // Booking buttons alert
-    document.querySelectorAll('#available-cars button').forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.preventDefault();
-        alert('Booking functionality coming soon! Thank you for your interest.');
-      });
-    });
   </script>
 
 </body>
 </html>
-

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Maruti Swift - ChaloDrives Rentals</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    main {
+      max-width: 960px;
+      margin: 48px auto 64px auto;
+      padding: 0 24px;
+    }
+    h1 {
+      color: #001F3F;
+      font-weight: 900;
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .car-details-overview {
+      margin-bottom: 32px;
+      background: #F7F7F7;
+      border-radius: 12px;
+      padding: 24px 32px;
+      box-shadow: 0 4px 12px rgba(0,31,63,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      color: #001F3F;
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 160px;
+    }
+    .price-item {
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: #001F3F;
+      min-width: 200px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-right: 2px solid #CCC;
+      padding-right: 24px;
+    }
+    .detail-item svg,
+    .price-item svg {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      fill: #FFCC00;
+    }
+    .carousel-container {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto 48px auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(0,31,63,0.2);
+      background: white;
+    }
+    .carousel-slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+    .carousel-slide {
+      min-width: 100%;
+      user-select: none;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,31,63,0.5);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 8px 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s ease;
+      z-index: 10;
+    }
+    .carousel-btn:hover {
+      background: rgba(0,31,63,0.8);
+    }
+    .carousel-btn:focus {
+      outline: 2px solid #FFCC00;
+      outline-offset: 2px;
+    }
+    .carousel-prev {
+      left: 16px;
+    }
+    .carousel-next {
+      right: 16px;
+    }
+    .btn-book {
+      display: block;
+      max-width: 220px;
+      background-color: #FFB800;
+      color: #001F3F;
+      font-weight: 700;
+      border-radius: 36px;
+      padding: 16px 0;
+      font-size: 1.3rem;
+      margin: 0 auto;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 16px rgba(255,184,0,0.75);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      position: relative;
+      z-index: 10;
+      white-space: nowrap;
+    }
+    .btn-book:active {
+      background-color: #E6A600;
+    }
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    .modal {
+      background: white;
+      border-radius: 18px;
+      max-width: 360px;
+      width: 100%;
+      padding: 28px 24px;
+      box-shadow: 0 8px 22px rgba(0,31,63,0.25);
+      text-align: center;
+      position: relative;
+      user-select: none;
+    }
+    .modal h2 {
+      margin-bottom: 16px;
+      color: #001F3F;
+      font-weight: 800;
+      font-size: 1.5rem;
+    }
+    .modal p {
+      margin-bottom: 24px;
+      font-size: 1rem;
+      color: #333333;
+      line-height: 1.4;
+    }
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: #001F3F;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      line-height: 1;
+    }
+    @media (max-width: 720px) {
+      .carousel-slide img {
+        height: 280px;
+      }
+      main {
+        margin: 32px 16px 48px;
+        padding: 0 12px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .car-details-overview {
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px;
+        border-right: none;
+      }
+      .price-item {
+        border-right: none;
+        min-width: auto;
+        justify-content: center;
+        padding-right: 0;
+      }
+      .btn-book {
+        max-width: 180px;
+        font-size: 1rem;
+        padding: 12px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="logo" aria-label="ChaloDrives Rentals Logo">ChaloDrives Rentals</div>
+    <div class="tagline">Drive Your Dream Car Today</div>
+    <div class="subtagline">Most Trusted Self-Drive Car Rental Services in India</div>
+  </header>
+
+  <main>
+    <h1>Maruti Swift</h1>
+
+    <div class="car-details-overview" aria-label="Car details overview">
+      <div class="price-item" title="Rental price per hour and day">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 1a7 7 0 0 0-7 7H3l4 4-4 4h2a7 7 0 0 0 7 7 7 7 0 0 0 0-14z"/>
+        </svg>
+        ₹ 299/hr | ₹ 1,299/day
+      </div>
+      <div class="detail-item" title="Fuel type">
+        Petrol
+      </div>
+      <div class="detail-item" title="Seating capacity">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="2"/>
+          <path d="M2 20v-2a4 4 0 0 1 8 0v2H2zm10 0v-2a4 4 0 0 1 8 0v2h-8z"/>
+        </svg>
+        5 seats
+      </div>
+    </div>
+
+    <div class="carousel-container" aria-label="Maruti Swift image gallery" role="region">
+      <button class="carousel-btn carousel-prev" aria-label="Previous image">&lt;</button>
+      <div class="carousel-slides" id="carousel-slides">
+        <div class="carousel-slide"><img src="img/maruti-swift-1.jpg" alt="Maruti Swift image 1" /></div>
+        <div class="carousel-slide"><img src="img/maruti-swift-2.jpg" alt="Maruti Swift image 2" /></div>
+        <div class="carousel-slide"><img src="img/maruti-swift-3.jpg" alt="Maruti Swift image 3" /></div>
+        <div class="carousel-slide"><img src="img/maruti-swift-4.jpg" alt="Maruti Swift image 4" /></div>
+        <div class="carousel-slide"><img src="img/maruti-swift-5.jpg" alt="Maruti Swift image 5" /></div>
+      </div>
+      <button class="carousel-btn carousel-next" aria-label="Next image">&gt;</button>
+    </div>
+
+    <button class="btn-book" aria-haspopup="dialog" aria-controls="booking-modal" id="open-booking">Book Now</button>
+  </main>
+
+  <div class="modal-overlay" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-title" tabindex="-1">
+    <div class="modal">
+      <button class="modal-close" aria-label="Close booking information" id="close-booking">&times;</button>
+      <h2 id="booking-title">Booking Information</h2>
+      <p>To book the Maruti Swift, please contact us at:</p>
+      <p><strong>Phone:</strong> +91-9133666641, 912223232</p>
+      <p><strong>Email:</strong> support@chalodrives.in</p>
+      <p>We look forward to helping you drive your dream car!</p>
+    </div>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    © 2025 ChaloDrives Rentals. All rights reserved.
+  </footer>
+
+<script>
+  const slides = document.getElementById('carousel-slides');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+  const totalSlides = slides.children.length;
+  let currentIndex = 0;
+  let slideWidth = slides.children[0].offsetWidth;
+  let autoSlideInterval;
+
+  function updateSlidePosition() {
+    slides.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+  }
+
+  function showPrevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlidePosition();
+  }
+
+  function showNextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlidePosition();
+  }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      showNextSlide();
+    }, 10000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  prevBtn.addEventListener('click', () => {
+    stopAutoSlide();
+    showPrevSlide();
+    startAutoSlide();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    stopAutoSlide();
+    showNextSlide();
+    startAutoSlide();
+  });
+
+  window.addEventListener('resize', () => {
+    slideWidth = slides.children[0].offsetWidth;
+    updateSlidePosition();
+  });
+
+  window.onload = () => {
+    updateSlidePosition();
+    startAutoSlide();
+  };
+
+  const openBtn = document.getElementById('open-booking');
+  const closeBtn = document.getElementById('close-booking');
+  const modal = document.getElementById('booking-modal');
+
+  openBtn.addEventListener('click', () => {
+    modal.style.display = 'flex';
+    modal.focus();
+    document.body.style.overflow = 'hidden';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    openBtn.focus();
+  });
+
+  modal.addEventListener('click', e => {
+    if (e.target === modal) {
+      closeBtn.click();
+    }
+  });
+
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      closeBtn.click();
+    }
+  });
+</script>
+</body>
+</html>

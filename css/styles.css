@@ -1,0 +1,318 @@
+/* Reset & base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #001F3F;
+  background-color: #fff;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+a {
+  color: #FFCC00;
+  text-decoration: none;
+}
+a:hover,
+button:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+.btn-primary {
+  background-color: #FFCC00;
+  color: #001F3F;
+  border: none;
+  padding: 12px 24px;
+  font-weight: 700;
+  border-radius: 28px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  user-select: none;
+}
+.btn-primary:active {
+  background-color: #E6B800;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+/* HEADER with logo and tagline */
+header.site-header {
+  background-color: #001F3F;
+  color: white;
+  text-align: center;
+  padding: 36px 24px 40px 24px;
+  user-select: none;
+}
+header.site-header .logo {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  color: #FFCC00;
+}
+header.site-header .tagline {
+  font-size: 1.375rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #FFFFFF;
+}
+header.site-header .subtagline {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.85;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+
+/* AVAILABLE CARS */
+section {
+  padding: 56px 24px 48px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+#available-cars h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 36px;
+  text-align: center;
+}
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 24px;
+}
+.car-card {
+  background: #F7F7F7;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,31,63,0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.car-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 14px rgba(0,31,63,0.15);
+}
+.car-card img {
+  width: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  max-height: 140px;
+}
+.car-info {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.car-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #001F3F;
+  text-transform: capitalize;
+}
+.car-details {
+  font-size: 0.9rem;
+  color: #333333;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.car-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.car-detail-item svg {
+  fill: #001F3F;
+  width: 18px;
+  height: 18px;
+}
+.car-price {
+  font-weight: 800;
+  color: #001F3F;
+  font-size: 1.125rem;
+  margin-bottom: 12px;
+}
+.car-card button {
+  align-self: flex-start;
+  background-color: #FFCC00;
+  color: #001F3F;
+  border: none;
+  border-radius: 24px;
+  padding: 8px 18px;
+  font-weight: 700;
+  transition: background-color 0.3s;
+}
+.car-card button:active {
+  background-color: #E6B800;
+}
+
+/* WHY CHOOSE US */
+#why-choose-us {
+  background: #fff;
+  text-align: center;
+}
+#why-choose-us h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 36px;
+}
+.features-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.feature-item {
+  max-width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  color: #001F3F;
+}
+.feature-item svg {
+  width: 48px;
+  height: 48px;
+  fill: #FFCC00;
+}
+.feature-item p {
+  font-weight: 600;
+  line-height: 1.2;
+  font-size: 1rem;
+}
+
+/* CONTACT US */
+#contact-us {
+  max-width: 900px;
+  margin: 0 auto 48px auto;
+  padding: 0 24px;
+}
+#contact-us h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #001F3F;
+}
+.contact-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  color: #001F3F;
+}
+form.contact-form {
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+form.contact-form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+form.contact-form input,
+form.contact-form textarea {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1.5px solid #001F3F;
+  resize: vertical;
+  min-height: 38px;
+  outline-offset: 2px;
+}
+form.contact-form textarea {
+  min-height: 90px;
+}
+form.contact-form button {
+  margin-top: 12px;
+  max-width: 140px;
+  align-self: start;
+  padding: 10px;
+  font-weight: 700;
+  border-radius: 24px;
+  border: none;
+  background-color: #FFCC00;
+  color: #001F3F;
+  transition: background-color 0.3s ease;
+}
+form.contact-form button:active {
+  background-color: #E6B800;
+}
+.contact-info {
+  flex: 1 1 300px;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+}
+.contact-info p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.contact-info p svg {
+  fill: #FFCC00;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+#contact-us .contact-info p:first-child {
+  display: none; /* Hides the address paragraph */
+}
+
+/* FOOTER */
+footer.site-footer {
+  background-color: #001F3F;
+  color: white;
+  text-align: center;
+  padding: 16px 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  user-select: none;
+  margin-top: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .car-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  .features-grid {
+    gap: 32px;
+  }
+  .contact-wrapper {
+    flex-direction: column;
+  }
+}

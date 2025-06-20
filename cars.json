@@ -1,0 +1,70 @@
+[
+  {
+    "name": "Maruti Swift",
+    "images": [
+      "img/maruti-swift-1.jpg",
+      "img/maruti-swift-2.jpg",
+      "img/maruti-swift-3.jpg"
+    ],
+    "pricePerHour": "₹ 150/hr",
+    "fuel": "Petrol",
+    "seats": "5",
+    "transmission": "Manual",
+    "pricePerDay": "₹ 1800/day"
+  },
+  {
+    "name": "Maruti Baleno",
+    "images": [
+      "img/maruti-baleno-1.jpg"
+    ],
+    "pricePerHour": "₹ 150/hr",
+    "fuel": "Petrol",
+    "seats": "5",
+    "transmission": "Manual",
+    "pricePerDay": "₹ 1800/day"
+  },
+  {
+    "name": "Hyundai Creta",
+    "images": [
+      "img/hyundai-creta.jpg"
+    ],
+    "pricePerHour": "₹ 270/hr",
+    "fuel": "Diesel",
+    "seats": "7",
+    "transmission": "Manual",
+    "pricePerDay": "₹ 3000/day"
+  },
+  {
+    "name": "Maruti Ciaz",
+    "images": [
+      "img/maruti-ciaz.jpg"
+    ],
+    "pricePerHour": "₹ 210/hr",
+    "fuel": "Petrol",
+    "seats": "5",
+    "transmission": "Manual",
+    "pricePerDay": "₹ 2300/day"
+  },
+  {
+    "name": "Maruti Brezza",
+    "images": [
+      "img/maruti-brezza.jpg"
+    ],
+    "pricePerHour": "₹ 210/hr",
+    "fuel": "Petrol",
+    "seats": "5",
+    "transmission": "Manual",
+    "pricePerDay": "₹ 2200/day"
+  },
+  {
+    "name": "Honda City",
+    "images": [
+      "img/honda-city.jpg"
+    ],
+    "pricePerHour": "₹ 280/hr",
+    "fuel": "Petrol",
+    "seats": "5",
+    "transmission": "Manual",
+    "pricePerDay": "₹ 3200/day"
+  }
+]

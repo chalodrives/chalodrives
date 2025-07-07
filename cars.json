@@ -24,17 +24,6 @@
     "pricePerDay": "₹ 1800/day"
   },
   {
-    "name": "Hyundai Creta",
-    "images": [
-      "img/hyundai-creta.jpg"
-    ],
-    "pricePerHour": "₹ 270/hr",
-    "fuel": "Diesel",
-    "seats": "7",
-    "transmission": "Manual",
-    "pricePerDay": "₹ 3000/day"
-  },
-  {
     "name": "Maruti Ciaz",
     "images": [
       "img/maruti-ciaz.jpg"

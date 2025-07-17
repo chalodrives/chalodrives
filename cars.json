@@ -32,7 +32,9 @@
   {
     "name": "Maruti Dzire",
     "images": [
-      "img/maruti-dzire-1.jpg"         
+      "img/maruti-dzire-1.jpg",
+      "img/maruti-dzire-2.jpg".
+      "img/maruti-dzire-3.jpg"
     ],
     "pricePerHour": "₹ 180/hr",
     "fuel": "Petrol",

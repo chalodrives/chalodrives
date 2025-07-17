@@ -15,7 +15,10 @@
   {
     "name": "Maruti Baleno",
     "images": [
-      "img/maruti-baleno-1.jpg"
+      "img/maruti-baleno-1.jpg",
+      "img/maruti-baleno-2.jpg",
+      "img/maruti-baleno-3.jpg",
+      "img/maruti-baleno-4.jpg"
     ],
     "pricePerHour": "₹ 150/hr",
     "fuel": "Petrol",

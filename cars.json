@@ -30,6 +30,17 @@
     "pricePerDay": "₹ 1800/day"
   },
   {
+    "name": "Maruti Dzire",
+    "images": [
+      "img/maruti-dzire-1.jpg"         
+    ],
+    "pricePerHour": "₹ 180/hr",
+    "fuel": "Petrol",
+    "seats": "5",
+    "transmission": "Automatic",
+    "pricePerDay": "₹ 2000/day"
+  },
+  {
     "name": "Maruti Ciaz",
     "images": [
       "img/maruti-ciaz.jpg"

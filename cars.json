@@ -4,7 +4,10 @@
     "images": [
       "img/maruti-swift-1.jpg",
       "img/maruti-swift-2.jpg",
-      "img/maruti-swift-3.jpg"
+      "img/maruti-swift-3.jpg",
+      "img/maruti-swift-4.jpg",
+      "img/maruti-swift-5.jpg",
+      "img/maruti-swift-6.jpg"      
     ],
     "pricePerHour": "₹ 150/hr",
     "fuel": "Petrol",
@@ -15,10 +18,7 @@
   {
     "name": "Maruti Baleno",
     "images": [
-      "img/maruti-baleno-1.jpg",
-      "img/maruti-baleno-2.jpg",
-      "img/maruti-baleno-3.jpg",
-      "img/maruti-baleno-4.jpg"
+      "img/maruti-baleno-1.jpg"
     ],
     "pricePerHour": "₹ 150/hr",
     "fuel": "Petrol",

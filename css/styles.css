@@ -72,13 +72,13 @@ header.site-header {
   gap: 10px;
 }
 
-header.site-header .logo {
+header.site-header.logo {
   width: 100%;
   text-align: center;
-  margin-bottom: 0; /* Changed from 8px */
+  margin-bottom: 0;
 }
 
-header.site-header .logo img {
+header.site-header.logo img {
   max-height: 120px;
   width: auto;
   display: block;
@@ -124,7 +124,6 @@ header.site-header .subtagline {
     width: 100%;
     margin-top: 15px;
     padding-top: 10px;
-    /* border-top: 1px solid rgba(255, 255, 255, 0.2); */ /* REMOVE THIS LINE */
 }
 
 .quick-links a {
@@ -785,7 +784,7 @@ body.blurred > *:not(#offerModal):not(script) {
     max-height: 90vh;
     max-width: 95vw;
   }
-  header.site-header .logo img {
+  header.site-header.logo img {
       max-height: 100px;
   }
   .contact-info-header {

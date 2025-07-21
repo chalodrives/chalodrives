@@ -60,26 +60,26 @@ header.site-header {
   background: linear-gradient(90deg, #001F3F, #ac9e67);
   color: white;
   text-align: center;
-  padding: 12px 24px; /* Adjusted padding */
+  padding: 12px 24px;
   user-select: none;
 }
 
 .top-bar {
-  display: flex; /* Use flexbox for alignment */
-  flex-wrap: wrap; /* Allow items to wrap to the next line on small screens */
-  justify-content: center; /* Center the content */
-  align-items: center; /* Vertically align items */
-  gap: 10px; /* Add some space between wrapped items */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 header.site-header .logo {
-  width: 100%; /* Ensure the logo takes full width to be centered */
-  text-align: center; /* Center the logo */
+  width: 100%;
+  text-align: center;
   margin-bottom: 8px;
 }
 
 header.site-header .logo img {
-  max-height: 120px; /* Adjust logo size for better fit */
+  max-height: 120px;
   width: auto;
   display: block;
   margin: 0 auto;
@@ -89,25 +89,25 @@ header.site-header .subtagline {
   font-size: 1rem;
   font-weight: 400;
   opacity: 0.85;
-  line-height: 1.2; /* Adjust line-height for better spacing */
-  width: 100%; /* Allow the tagline to take the full width */
-  margin-bottom: 10px; /* Add margin below tagline */
+  line-height: 1.2;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .contact-info-header {
   display: flex;
-  flex-wrap: wrap; /* Allow contact items to wrap */
-  justify-content: center; /* Center the contact items */
-  gap: 10px 15px; /* Add space between contact items */
-  width: 100%; /* Take up the full width */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 15px;
+  width: 100%;
   color: #fff;
   font-size: 0.9rem;
 }
 
 .contact-item {
-  display: inline-flex; /* Use inline-flex for better alignment of icons and text */
+  display: inline-flex;
   align-items: center;
-  gap: 5px; /* Space between icon and text */
+  gap: 5px;
 }
 
 .social-icons {
@@ -117,7 +117,7 @@ header.site-header .subtagline {
 }
 
 .social-icons a {
-    margin: 0 8px; /* Space between social icons */
+    margin: 0 8px;
 }
 
 .quick-links {
@@ -132,6 +132,7 @@ header.site-header .subtagline {
     margin: 0 15px;
     font-weight: 500;
 }
+
 
 /* Available Cars Section */
 section {
@@ -408,11 +409,9 @@ h1 {
   box-shadow: 0 10px 28px rgba(0,31,63,0.2);
   background: white;
 }
-/* Carousel images wrapper */
 .carousel-slides {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  width: 100%;
 }
 .carousel-slide {
   min-width: 100%;
@@ -421,10 +420,9 @@ h1 {
 .carousel-slide img {
   width: 100%;
   height: 420px;
-  object-fit: contain; /* show full image */
-  background-color: white; /* avoid empty background around image */
+  object-fit: contain;
+  background-color: white;
 }
-/* Navigation buttons */
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -453,7 +451,6 @@ h1 {
 .carousel-next {
   right: 16px;
 }
-/* Book now button */
 .btn-book {
   display: block;
   max-width: 260px;
@@ -475,7 +472,6 @@ h1 {
   z-index: 10;
   white-space: nowrap;
 }
-
 .btn-book:active {
   background-color: #E6A600;
 }
@@ -528,20 +524,20 @@ h1 {
 }
 
 marquee {
-  background-color: black; /* Black background for the marquee */
-  color: white; /* White text color for the marquee */
-  padding: 10px 0; /* Add some vertical padding */
-  font-size: 1.1em; /* Adjust font size if needed */
+  background-color: black;
+  color: white;
+  padding: 10px 0;
+  font-size: 1.1em;
 }
 
 marquee a {
-  color: white; /* Ensure the link text within the marquee is also white */
-  text-decoration: none; /* Remove underline from the link */
+  color: white;
+  text-decoration: none;
 }
 
 marquee svg {
-  vertical-align: middle; /* Align the SVG icon vertically with the text */
-  margin-right: 5px; /* Add some space between the icon and text */
+  vertical-align: middle;
+  margin-right: 5px;
 }
 
 /* Styles for the Offer Popup */
@@ -590,20 +586,16 @@ marquee svg {
   border-radius: 16px;
   display: block;
 }
-
-/* Let's specifically override the generic .modal padding for .offer-modal */
 .modal-overlay .offer-modal {
-    padding: 0; /* Ensure no padding is added by the generic .modal rule */
+    padding: 0;
 }
-
 
 /* Blur effect for main content */
 body.blurred > *:not(#offerModal):not(script) {
   filter: blur(5px);
-  pointer-events: none; /* Disables interaction with blurred elements */
+  pointer-events: none;
 }
 
-/* Initial state of the offer modal (hidden by default) */
 #offerModal {
     display: none;
 }
@@ -613,14 +605,14 @@ body.blurred > *:not(#offerModal):not(script) {
     justify-content: center;
     gap: 20px;
     margin-bottom: 40px;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
+    flex-wrap: wrap;
 }
 
 .feature-box {
     display: flex;
     align-items: center;
     padding: 15px 30px;
-    border: 1px solid #cce0ff; /* Light blue border */
+    border: 1px solid #cce0ff;
     border-radius: 10px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
@@ -635,7 +627,7 @@ body.blurred > *:not(#offerModal):not(script) {
 .feature-box i {
     font-size: 28px;
     margin-right: 10px;
-    color: #4a90e2; /* Blue icon color */
+    color: #4a90e2;
 }
 
 .feature-box span {
@@ -649,12 +641,12 @@ body.blurred > *:not(#offerModal):not(script) {
     justify-content: center;
     gap: 15px;
     width: 100%;
-    max-width: 800px; /* Adjust as needed */
+    max-width: 800px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     padding: 20px;
-    flex-wrap: wrap; /* Allow wrapping */
+    flex-wrap: wrap;
     margin: -20px auto 40px auto;
 }
 
@@ -664,18 +656,18 @@ body.blurred > *:not(#offerModal):not(script) {
     flex-direction: column;
     align-items: center;
     padding: 15px 0;
-    border-right: 1px solid #eee; /* Separator lines */
-    min-width: 120px; /* Minimum width for each item */
+    border-right: 1px solid #eee;
+    min-width: 120px;
 }
 
 .feature-detail:last-child {
-    border-right: none; /* No border on the last item */
+    border-right: none;
 }
 
 .feature-detail i, .feature-detail svg {
     font-size: 38px;
     margin-bottom: 10px;
-    height: 38px; /* Explicit height for SVG */
+    height: 38px;
 }
 
 .feature-detail .label {
@@ -690,15 +682,14 @@ body.blurred > *:not(#offerModal):not(script) {
     color: #333;
 }
 
-/* Specific icon colors */
 .fuel-icon {
-    color: #4CAF50; /* Green */
+    color: #4CAF50;
 }
 .seater-icon {
-    color: #A0522D; /* Sienna/Brown */
+    color: #A0522D;
 }
 .transmission-icon {
-    color: #DAA520; /* Goldenrod/Yellow-Orange */
+    color: #DAA520;
 }
 
 .modal-header {

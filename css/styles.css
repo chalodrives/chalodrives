@@ -78,8 +78,9 @@ header.site-header.logo {
   margin-bottom: 8px;
 }
 
-header.site-header.logo img {
-  max-height: 120px;
+header.site-header .logo img {
+  max-width: 280px; /* Sets a maximum width for the logo */
+  max-height: 120px; 
   width: auto;
   display: block;
   margin: 0 auto;

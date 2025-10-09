@@ -30,6 +30,17 @@
     "pricePerDay": "₹ 1800/day"
   },
   {
+    "name": "Maruti Suzuki Ertiga 2025",
+    "images": [
+      "img/maruti-ertiga.jpg"
+    ],
+    "pricePerHour": "₹ 180/hr",
+    "fuel": "Petrol / CNG",
+    "seats": "7",
+    "transmission": "Manual",
+    "pricePerDay": "₹ 3000/day"
+  }, 
+  {
     "name": "Maruti Dzire",
     "images": [
       "img/maruti-dzire-1.jpg",

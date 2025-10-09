@@ -32,7 +32,10 @@
   {
     "name": "Maruti Suzuki Ertiga 2025",
     "images": [
-      "img/maruti-ertiga.jpg"
+      "img/maruti-ertiga.jpg",
+      "img/maruti-ertiga-1.jpg",
+      "img/maruti-ertiga-2.jpg",
+      "img/maruti-ertiga-3.jpg"
     ],
     "pricePerHour": "₹ 180/hr",
     "fuel": "Petrol / CNG",

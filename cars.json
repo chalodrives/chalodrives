@@ -37,7 +37,7 @@
       "img/maruti-ertiga-2.jpg",
       "img/maruti-ertiga-3.jpg"
     ],
-    "pricePerHour": "₹ 180/hr",
+    "pricePerHour": "₹ 230/hr",
     "fuel": "Petrol / CNG",
     "seats": "7",
     "transmission": "Manual",
@@ -56,6 +56,35 @@
     "transmission": "Automatic",
     "pricePerDay": "₹ 2000/day"
   },
+  {
+    "name": "Maruti Grand Vitara",
+    "images": [
+      "img/maruti-gv-1.jpg",
+      "img/maruti-gv-2.jpg",
+      "img/maruti-gv-3.jpg",
+      "img/maruti-gv-4.jpg",
+      "img/maruti-gv-5.jpg",
+      "img/maruti-gv-6.jpg"
+    ],
+    "pricePerHour": "₹ 215/hr",
+    "fuel": "Petrol",
+    "seats": "5",
+    "transmission": "Manual",
+    "pricePerDay": "₹ 2400/day"
+  },  
+   {
+    "name": "Maruti Baleno",
+    "images": [
+      "img/maruti-bl_at-1.jpg",
+      "img/maruti-bl_at-2.jpg",
+      "img/maruti-bl_at-3.jpg"
+    ],
+    "pricePerHour": "₹ 170/hr",
+    "fuel": "Petrol",
+    "seats": "5",
+    "transmission": "Automatic",
+    "pricePerDay": "₹ 2000/day"
+  }, 
   {
     "name": "Maruti Ciaz",
     "images": [

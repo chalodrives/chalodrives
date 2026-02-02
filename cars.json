@@ -97,6 +97,17 @@
     "pricePerDay": "₹ 2300/day"
   },
   {
+    "name": "Tata Nexon",
+    "images": [
+      "img/tata-nexon-pet-auto-1.jpeg"
+    ],
+    "pricePerHour": "₹ 150/hr",
+    "fuel": "Petrol",
+    "seats": "5",
+    "transmission": "Automatic",
+    "pricePerDay": "₹ 2500/day"
+  },  
+  {
     "name": "Maruti Brezza",
     "images": [
       "img/maruti-brezza.jpg"

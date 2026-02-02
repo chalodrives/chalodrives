@@ -84,7 +84,22 @@
     "seats": "5",
     "transmission": "Automatic",
     "pricePerDay": "₹ 2000/day"
-  }, 
+  },
+  {
+    "name": "Tata Nexon",
+    "images": [
+      "img/tata-nexon-pet-auto-1.jpeg",
+      "img/tata-nexon-pet-auto-2jpeg",
+      "img/tata-nexon-pet-auto-3.jpeg",
+      "img/tata-nexon-pet-auto-4.jpeg",
+      "img/tata-nexon-pet-auto-5.jpeg"
+    ],
+    "pricePerHour": "₹ 150/hr",
+    "fuel": "Petrol",
+    "seats": "5",
+    "transmission": "Automatic",
+    "pricePerDay": "₹ 2500/day"
+  },    
   {
     "name": "Maruti Ciaz",
     "images": [
@@ -95,18 +110,7 @@
     "seats": "5",
     "transmission": "Manual",
     "pricePerDay": "₹ 2300/day"
-  },
-  {
-    "name": "Tata Nexon",
-    "images": [
-      "img/tata-nexon-pet-auto-1.jpeg"
-    ],
-    "pricePerHour": "₹ 150/hr",
-    "fuel": "Petrol",
-    "seats": "5",
-    "transmission": "Automatic",
-    "pricePerDay": "₹ 2500/day"
-  },  
+  }, 
   {
     "name": "Maruti Brezza",
     "images": [

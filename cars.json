@@ -110,7 +110,19 @@
     "seats": "5",
     "transmission": "Manual",
     "pricePerDay": "₹ 2300/day"
-  }, 
+  },
+ {
+    "name": "Honda City",
+    "images": [
+      "img/honda-city_diesel-1.jpeg",
+      "img/honda-city_diesel-2.jpeg"
+    ],
+    "pricePerHour": "₹ 150/hr",
+    "fuel": "Diesel",
+    "seats": "5",
+    "transmission": "Manual",
+    "pricePerDay": "₹ 2500/day"
+  },   
   {
     "name": "Maruti Brezza",
     "images": [
@@ -121,16 +133,5 @@
     "seats": "5",
     "transmission": "Manual",
     "pricePerDay": "₹ 2200/day"
-  },
-  {
-    "name": "Honda City",
-    "images": [
-      "img/honda-city.jpg"
-    ],
-    "pricePerHour": "₹ 280/hr",
-    "fuel": "Petrol",
-    "seats": "5",
-    "transmission": "Manual",
-    "pricePerDay": "₹ 3200/day"
   }
 ]

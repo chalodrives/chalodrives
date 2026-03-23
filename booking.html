@@ -63,5 +63,46 @@ if (selectedCar) {
 }
 </script>
 </body>
+  <body>
+
+<div class="booking-container">
+  <h2>Book Your Car</h2>
+
+  <input type="text" placeholder="Your Name">
+  <input type="text" placeholder="Phone Number">
+
+  <label>Pickup Date</label>
+  <input type="date">
+
+  <label>Drop Date</label>
+  <input type="date">
+
+  <select>
+    <option>Maruti Swift</option>
+    <option>Maruti Baleno</option>
+    <option>Maruti Suzuki Ertiga</option>
+    <option>Maruti Dzire</option>
+    <option>Maruti Grand Vitara</option>
+    <option>Baleno Automatic</option>
+    <option>Tata Nexon</option>
+    <option>Maruti Ciaz</option>
+    <option>Honda City</option>
+    <option>Maruti Brezza</option>
+  </select>
+
+  <button>Pay ₹500 Advance</button>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const selectedCar = params.get("car");
+
+if (selectedCar) {
+  const dropdown = document.querySelector("select");
+  dropdown.value = decodeURIComponent(selectedCar);
+}
+</script>
+
+</body>
 </body>
 </html>

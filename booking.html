@@ -53,6 +53,15 @@ function payNow() {
   rzp1.open();
 }
 </script>
+<script>
+const params = new URLSearchParams(window.location.search);
+const selectedCar = params.get("car");
 
+if (selectedCar) {
+  const dropdown = document.querySelector("select");
+  dropdown.value = decodeURIComponent(selectedCar);
+}
+</script>
+</body>
 </body>
 </html>

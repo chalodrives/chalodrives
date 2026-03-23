@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Car - ChaloDrives</title>
+</head>
+<body>
+
+<h2>Book Your Car</h2>
+
+<form>
+  <input type="text" placeholder="Name" required><br><br>
+  <input type="tel" placeholder="Phone Number" required><br><br>
+
+  <label>Pickup Date:</label>
+  <input type="date" required><br><br>
+
+  <label>Drop Date:</label>
+  <input type="date" required><br><br>
+
+  <select>
+    <option>Swift</option>
+    <option>Baleno</option>
+  </select><br><br>
+
+</form>
+
+<button onclick="payNow()">Pay ₹500 Advance</button>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+function payNow() {
+  var options = {
+    "key": "YOUR_KEY_ID",
+    "amount": "50000",
+    "currency": "INR",
+    "name": "ChaloDrives",
+    "description": "Car Booking Advance",
+    "handler": function (response){
+        alert("Booking Successful!");
+    }
+  };
+  var rzp1 = new Razorpay(options);
+  rzp1.open();
+}
+</script>
+
+</body>
+</html>

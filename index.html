@@ -340,15 +340,21 @@ db.ref('cars').on('value', (snapshot) => {
 
   let html = '';
 
-  for (let key in cars) {
-    const car = cars[key];
+for (let key in cars) {
+  const car = cars[key];
 
-    html += `
-     
-    `;
-  }
+  html += `
+    <article class="car-card">
+      <div class="car-info">
+        <h3>${car.name}</h3>
+        <div class="car-price">₹${car.price}/day</div>
+        <p>${car.available ? "Available" : "Booked"}</p>
+      </div>
+    </article>
+  `;
+}
 
-  container.innerHTML = html;
+container.innerHTML = html;
 });
 </script>
   <article class="car-card" aria-label="${car.name}">

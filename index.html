@@ -335,14 +335,11 @@ const db = firebase.database();
 
 const container = document.getElementById('car-list');
 
-db.ref('cars').on('value', (snapshot) => {
-  const cars = snapshot.val();
-
-  let html = '';
-
-for (let key in cars) {
-  const car = cars[key];
-
+<script>
+  db.ref("cars").on("value", (snapshot) => {
+    ...
+  });
+</script>
   html += `
     <article class="car-card">
       <div class="car-info">

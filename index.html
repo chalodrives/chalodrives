@@ -105,7 +105,9 @@ db.ref("cars").on("value", (snapshot) => {
     <p>Price: ₹${car.price}/day</p>
     <p>${car.available ? "Available" : "Not Available"}</p>
 
-    <a href="https://wa.me/919000509072?text=I want to book ${car.name}" target="_blank">
+    <a href="#" onclick="bookCar('${car.name}')">
+  <button>Book Now</button>
+</a>
       <button>Book Now</button>
     </a>
 
@@ -123,11 +125,7 @@ db.ref("cars").on("value", (snapshot) => {
     return;
   }
 
-  let message = `Hello ChaloDrives,%0A
-Name: ${name}%0A
-Car: ${carName}%0A
-Pickup Date: ${date}%0A
-Location: ${location}`;
+  let message = `Hello ChaloDrives,%0AName: ${name}%0ACar: ${carName}%0APickup Date: ${date}%0ALocation: ${location}`;
 
   window.open(`https://wa.me/919000509072?text=${message}`, '_blank');
 }

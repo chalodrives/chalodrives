@@ -112,6 +112,25 @@ db.ref("cars").on("value", (snapshot) => {
   </div>
 `).join('');
 });
+  function bookCar(carName) {
+
+  let name = document.getElementById("custName").value;
+  let date = document.getElementById("pickupDate").value;
+  let location = document.getElementById("location").value;
+
+  if(!name || !date || !location){
+    alert("Please fill all details");
+    return;
+  }
+
+  let message = `Hello ChaloDrives,%0A
+Name: ${name}%0A
+Car: ${carName}%0A
+Pickup Date: ${date}%0A
+Location: ${location}`;
+
+  window.open(`https://wa.me/919000509072?text=${message}`, '_blank');
+}
 </script>
 
 </body>

@@ -393,5 +393,43 @@ db.ref('cars').on('value', (snapshot) => {
         </article>
       `}).join('');
     });
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 
+<script>
+  // 🔥 Your Firebase config
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    databaseURL: "https://chalodrives-c44d7-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "chalodrives-c44d7",
+    storageBucket: "chalodrives-c44d7.appspot.com",
+    messagingSenderId: "XXXX",
+    appId: "XXXX"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  // 🔥 Fetch cars
+  db.ref("cars").on("value", (snapshot) => {
+    const data = snapshot.val();
+    const container = document.getElementById("car-list");
+
+    if (!data) {
+      container.innerHTML = "No cars available";
+      return;
+    }
+
+    container.innerHTML = Object.values(data).map(car => `
+      <div class="car-card">
+        <h3>${car.name}</h3>
+        <p>Price: ₹${car.price}/day</p>
+        <p>${car.available ? "Available" : "Not Available"}</p>
+        <button>Book Now</button>
+      </div>
+    `).join('');
+  });
+</script>
 </script>

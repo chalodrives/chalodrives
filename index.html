@@ -344,14 +344,7 @@ db.ref('cars').on('value', (snapshot) => {
     const car = cars[key];
 
     html += `
-      <article class="car-card">
-        <div class="car-info">
-          <h3 class="car-name">${car.name}</h3>
-          <div class="car-price">₹${car.price}/day</div>
-          <p>${car.available ? "Available" : "Booked"}</p>
-          <a href="booking.html?car=${encodeURIComponent(car.name)}" class="btn-primary">Book Now</a>
-        </div>
-      </article>
+     
     `;
   }
 

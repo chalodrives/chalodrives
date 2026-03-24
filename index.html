@@ -100,16 +100,17 @@ db.ref("cars").on("value", (snapshot) => {
   }
 
   container.innerHTML = Object.values(data).map(car => `
-    <div class="car-card">
-      <img src="${car.image}">
-      <div class="car-info">
-        <h3>${car.name}</h3>
-        <p>₹${car.price}/day</p>
-        <p>${car.fuel} | ${car.seats} seats</p>
-        <button>Book Now</button>
-      </div>
-    </div>
-  `).join('');
+  <div class="car-card">
+    <h3>${car.name}</h3>
+    <p>Price: ₹${car.price}/day</p>
+    <p>${car.available ? "Available" : "Not Available"}</p>
+
+    <a href="https://wa.me/919000509072?text=I want to book ${car.name}" target="_blank">
+      <button>Book Now</button>
+    </a>
+
+  </div>
+`).join('');
 });
 </script>
 

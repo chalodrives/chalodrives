@@ -235,6 +235,143 @@ const db = firebase.database();
 const container = document.getElementById('car-list');
 
 <script>
+  function validateEmail() {
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('emailError');
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(emailInput.value)) {
+      emailError.style.display = 'block';
+      return false;
+    } else {
+      emailError.style.display = 'none';
+      return true;
+    }
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    if (!validateEmail()) {
+      return;
+    }
+
+    const form = document.getElementById('contactForm');
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        form.reset();
+        openThankYouModal();
+      } else {
+        alert('There was a problem with your submission. Please try again.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('There was a problem with your submission. Please try again.');
+    }
+  }
+
+  function openThankYouModal() {
+    const modal = document.getElementById('thankYouModal');
+    modal.style.display = 'flex';
+    modal.focus();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeThankYouModal() {
+    const modal = document.getElementById('thankYouModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    document.getElementById('contactForm').querySelector('button[type=submit]').focus();
+  }
+
+  document.getElementById('closeThankYouBtn').addEventListener('click', closeThankYouModal);
+
+  // Close modal on click outside modal content
+  document.getElementById('thankYouModal').addEventListener('click', e => {
+    if (e.target.id === 'thankYouModal') {
+      closeThankYouModal();
+    }
+  });
+
+  // Close modal on Escape key
+  window.addEventListener('keydown', e => {
+    const modal = document.getElementById('thankYouModal');
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      closeThankYouModal();
+    }
+  });
+
+   // New functions for Offer Modal
+  function openOfferModal() {
+    const offerModal = document.getElementById('offerModal');
+    offerModal.style.display = 'flex';
+    document.body.classList.add('blurred'); // Apply blur to the body
+    offerModal.focus(); // Focus the modal for accessibility
+    document.body.style.overflow = 'hidden'; // Prevent scrolling of background
+  }
+
+  function closeOfferModal() {
+    const offerModal = document.getElementById('offerModal');
+    offerModal.style.display = 'none';
+    document.body.classList.remove('blurred'); // Remove blur
+    document.body.style.overflow = ''; // Restore scrolling
+    // Optionally focus on a relevant element in the main content after closing
+    document.querySelector('.site-header .logo').focus();
+  }
+
+  // Event listener for closing the offer modal
+  document.getElementById('closeOfferBtn').addEventListener('click', closeOfferModal);
+
+  // Close offer modal on click outside modal content
+  document.getElementById('offerModal').addEventListener('click', e => {
+    if (e.target.id === 'offerModal') {
+      closeOfferModal();
+    }
+  });
+
+  // Close offer modal on Escape key
+  window.addEventListener('keydown', e => {
+    const offerModal = document.getElementById('offerModal');
+    if (e.key === 'Escape' && offerModal.style.display === 'flex') {
+      closeOfferModal();
+    }
+  });
+
+  // Open the offer modal automatically when the page loads  -- Enable this to load offers popup on main page
+  //window.addEventListener('load', openOfferModal);
+
+  // Function to prevent default link behavior for .btn-primary links with href="#"
+  document.querySelectorAll('.btn-primary[href="#"]').forEach(link => {
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // This stops the browser from navigating to "#"
+    });
+  });
+
+  <!-- Firebase Scripts -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script>
+const firebaseConfig = {
+  databaseURL: "https://chalodrives-c44d7-default-rtdb.asia-southeast1.firebasedatabase.app"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+const container = document.getElementById('car-list');
+
+<script>
   db.ref("cars").on("value", (snapshot) => {
     ...
   });
@@ -253,6 +390,90 @@ const container = document.getElementById('car-list');
 container.innerHTML = html;
 });
 </script>
+  <article class="car-card" aria-label="${car.name}">
+          <img src="${thumbnailUrl}" alt="${car.name}" />
+          <div class="car-info">
+            <h3 class="car-name">${car.name}</h3>
+            <div class="car-details">
+              <div class="car-detail-item" title="Rental Price">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a7 7 0 0 0-7 7H3l4 4-4 4h2a7 7 0 0 0 7 7 7 7 0 0 0 0-14z"/></svg>
+                <span>${car.price}</span>
+              </div>
+              <div class="car-detail-item" title="Fuel Type">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18H3V3z"/></svg>
+                <span>${car.fuel}</span>
+              </div>
+              <div class="car-detail-item" title="Seating Capacity">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="2"/><path d="M2 20v-2a4 4 0 0 1 8 0v2H2zm10 0v-2a4 4 0 0 1 8 0v2h-8z"/></svg>
+                <span>${car.seats} seats</span>
+              </div>
+              <div class="car-detail-item" title="Transmission Type">
+                <svg fill="currentColor" height="24px" width="24px" viewBox="0 0 512 512">
+                  <path d="M437.02,74.98C388.667,26.628,324.38,0,256,0S123.333,26.628,74.98,74.98C26.628,123.333,0,187.619,0,256s26.628,132.667,74.98,181.02C123.333,485.372,187.62,512,256,512s132.667-26.628,181.02-74.98C485.372,388.667,512,324.381,512,256S485.372,123.333,437.02,74.98z M272.696,380.227h-33.391V272.696h-87.854v107.531h-33.391V131.773h33.391v107.531h87.854v-107.53h33.391v107.53h87.855v-107.53h33.391v140.921H272.696V380.227z M388.296,375.069l-12.329-19.908h-6.666v19.908h-17.808v-64.838h29.771c12.693,0,21.826,11.415,21.826,22.466c0,7.489-3.47,14.428-9.315,18.538l14.612,23.835H388.296z"/>
+                  <path d="M380.078,325.756h-10.776v13.881h11.233c2.193,0,4.476-2.558,4.476-6.94C385.008,328.221,382.268,325.756,380.078,325.756z"/>
+                </svg>
+                <span>${car.transmission}</span>
+              </div>
+            </div>
+            <div class="car-price">${car.pricePerDay}</div>
+            <a href="booking.html?car=${encodeURIComponent(car.name)}" class="btn-primary">Book Now</a>
+          </div>
+        </article>
+      `}).join('');
+    });
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyA...",
+  authDomain: "chalodrives-c44d7.firebaseapp.com",
+  databaseURL: "https://chalodrives-c44d7-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "chalodrives-c44d7",
+  storageBucket: "chalodrives-c44d7.appspot.com",
+  messagingSenderId: "233535532999",
+  appId: "1:233535532999:web:..."
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+</script>
+
+  // 🔥 Fetch cars
+  db.ref("cars").on("value", (snapshot) => {
+    const data = snapshot.val();
+    const container = document.getElementById("car-list");
+
+    if (!data) {
+      container.innerHTML = "No cars available";
+      return;
+    }
+
+    container.innerHTML = Object.values(data).map(car => `
+  <div class="car-card">
+
+    <img src="${car.image}" style="width:100%;height:150px;object-fit:cover;border-radius:10px;" />
+
+    <h3>${car.name}</h3>
+
+    <p>⛽ ${car.fuel}</p>
+    <p>👥 ${car.seats} seats</p>
+    <p>⚙️ ${car.transmission}</p>
+
+    <h2>₹${car.price}/day</h2>
+
+    <button>Book Now</button>
+
+  </div>
+`).join('');
+  });
+</script>
+</script>
+
   <article class="car-card" aria-label="${car.name}">
           <img src="${thumbnailUrl}" alt="${car.name}" />
           <div class="car-info">

@@ -325,16 +325,43 @@
     });
   });
 
-  fetch('cars.json')
-    .then(res => res.json())
-    .then(cars => {
-      const container = document.getElementById('car-list');
-      container.innerHTML = cars.map(car => {
-        // Use the first image from the 'images' array for the thumbnail
-        const thumbnailUrl = car.images && car.images.length > 0 ? car.images[0] : 'img/default-car.jpg';
-        
-        return `
+  <!-- Firebase Scripts -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
+<script>
+const firebaseConfig = {
+  databaseURL: "https://chalodrives-c44d7-default-rtdb.asia-southeast1.firebasedatabase.app"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+const container = document.getElementById('car-list');
+
+db.ref('cars').on('value', (snapshot) => {
+  const cars = snapshot.val();
+
+  let html = '';
+
+  for (let key in cars) {
+    const car = cars[key];
+
+    html += `
+      <article class="car-card">
+        <div class="car-info">
+          <h3 class="car-name">${car.name}</h3>
+          <div class="car-price">₹${car.price}/day</div>
+          <p>${car.available ? "Available" : "Booked"}</p>
+          <a href="booking.html?car=${encodeURIComponent(car.name)}" class="btn-primary">Book Now</a>
+        </div>
+      </article>
+    `;
+  }
+
+  container.innerHTML = html;
+});
+</script>
   <article class="car-card" aria-label="${car.name}">
           <img src="${thumbnailUrl}" alt="${car.name}" />
           <div class="car-info">

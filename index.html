@@ -1,123 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ChaloDrives Rentals</title>
+  <title>ChaloDrives</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #f5f7fa;
-}
+  <style>
+    body { margin:0; font-family: Arial; background:#f5f5f5; }
 
-/* HEADER */
-header {
-  background: #0f172a;
-  color: white;
-  padding: 15px;
-  text-align: center;
-}
+    header {
+      background:#111;
+      color:white;
+      text-align:center;
+      padding:15px;
+    }
 
-header img {
-  height: 50px;
-}
+    #car-list {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+      padding:20px;
+    }
 
-/* HERO */
-.hero {
-  background: linear-gradient(to right, #1e293b, #334155);
-  color: white;
-  padding: 40px;
-  text-align: center;
-}
+    .car-card {
+      background:white;
+      border-radius:10px;
+      box-shadow:0 5px 10px rgba(0,0,0,0.1);
+      overflow:hidden;
+    }
 
-/* CAR GRID */
-#car-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 20px;
-  padding: 20px;
-}
+    .car-card img {
+      width:100%;
+      height:150px;
+      object-fit:cover;
+    }
 
-/* CARD */
-.car-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: 0.3s;
-}
+    .car-info {
+      padding:15px;
+    }
 
-.car-card:hover {
-  transform: translateY(-5px);
-}
-
-.car-card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-}
-
-.car-info {
-  padding: 15px;
-}
-
-.car-info h3 {
-  margin: 0;
-}
-
-.price {
-  color: #16a34a;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  background: #2563eb;
-  color: white;
-  border-radius: 6px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #1d4ed8;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #0f172a;
-  color: white;
-}
-</style>
+    button {
+      width:100%;
+      padding:10px;
+      background:blue;
+      color:white;
+      border:none;
+      border-radius:5px;
+      margin-top:10px;
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-  <img src="img/chalodrives-logo.png">
   <h2>ChaloDrives Rentals</h2>
 </header>
 
-<section class="hero">
-  <h1>Self Drive Cars in Hyderabad</h1>
-  <p>Affordable | Flexible | Trusted</p>
-</section>
-
-<section>
-  <h2 style="text-align:center;">Available Cars</h2>
-  <div id="car-list"></div>
-</section>
-
-<footer>
-  © 2025 ChaloDrives Rentals
-</footer>
+<div id="car-list"></div>
 
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -131,7 +70,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// FETCH CARS
 db.ref("cars").on("value", (snapshot) => {
   const data = snapshot.val();
   const container = document.getElementById("car-list");
@@ -143,29 +81,16 @@ db.ref("cars").on("value", (snapshot) => {
 
   container.innerHTML = Object.values(data).map(car => `
     <div class="car-card">
-
-      <img src="${car.image}" />
-
+      <img src="${car.image}">
       <div class="car-info">
         <h3>${car.name}</h3>
-
-        <p>⛽ ${car.fuel}</p>
-        <p>👥 ${car.seats} seats</p>
-        <p>⚙️ ${car.transmission}</p>
-
-        <div class="price">₹${car.price}/day</div>
-
-        <button onclick="bookCar('${car.name}')">Book Now</button>
+        <p>₹${car.price}/day</p>
+        <p>${car.fuel} | ${car.seats} seats</p>
+        <button>Book Now</button>
       </div>
-
     </div>
   `).join('');
 });
-
-// BOOK BUTTON
-function bookCar(name){
-  alert("Booking for " + name);
-}
 </script>
 
 </body>

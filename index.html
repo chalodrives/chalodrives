@@ -421,13 +421,22 @@ const db = firebase.database();
     }
 
     container.innerHTML = Object.values(data).map(car => `
-      <div class="car-card">
-        <h3>${car.name}</h3>
-        <p>Price: ₹${car.price}/day</p>
-        <p>${car.available ? "Available" : "Not Available"}</p>
-        <button>Book Now</button>
-      </div>
-    `).join('');
+  <div class="car-card">
+
+    <img src="${car.image}" style="width:100%;height:150px;object-fit:cover;border-radius:10px;" />
+
+    <h3>${car.name}</h3>
+
+    <p>⛽ ${car.fuel}</p>
+    <p>👥 ${car.seats} seats</p>
+    <p>⚙️ ${car.transmission}</p>
+
+    <h2>₹${car.price}/day</h2>
+
+    <button>Book Now</button>
+
+  </div>
+`).join('');
   });
 </script>
 </script>
